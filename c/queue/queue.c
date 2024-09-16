@@ -37,10 +37,3 @@ int dequeue(struct queue* q) {
     }
     return result;
 }
-
-void display(struct queue* q) {
-    struct node* current;
-    for (current = q->front; current != NULL; current = current->next) {
-        printf("%d ", current->data);
-    }
-}

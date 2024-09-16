@@ -14,6 +14,5 @@ struct queue {
 void initialize(struct queue*);
 void enqueue(struct queue*, int);
 int dequeue(struct queue*);
-void display(struct queue*);
 
 #endif
