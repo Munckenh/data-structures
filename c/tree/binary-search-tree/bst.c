@@ -15,7 +15,8 @@ void insert(struct node** root, int key) {
     while (*current != NULL) {
         if ((*current)->key > key) {
             current = &(*current)->left;
-        } else {
+        }
+        else {
             current = &(*current)->right;
         }
     }
@@ -25,40 +26,45 @@ void insert(struct node** root, int key) {
 bool search(struct node* root, int key) {
     struct node* current = root;
     while (current != NULL) {
-        if (current->key == key){
+        if (current->key == key) {
             return true;
         }
         else if (current->key > key) {
             current = current->left;
-        } else {
+        }
+        else {
             current = current->right;
         }
     }
     return false;
 }
 
-struct node* pop_minimum(struct node** root) {
+int pop_minimum(struct node** root) {
     struct node** current = root;
     while (*current != NULL && (*current)->left != NULL) {
         current = &(*current)->left;
     }
-    struct node* minimum = *current;
     if (*current != NULL) {
+        struct node* minimum = *current;
+        int result = minimum->key;
         *current = minimum->right;
-        minimum->right = NULL;
+        free(minimum);
+        return result;
     }
-    return minimum;
+    return 0;
 }
 
-struct node* pop_maximum(struct node** root) {
+int pop_maximum(struct node** root) {
     struct node** current = root;
     while (current != NULL && (*current)->right != NULL) {
         current = &(*current)->right;
     }
-    struct node* maximum = *current;
     if (*current != NULL) {
+        struct node* maximum = *current;
+        int result = maximum->key;
         *current = maximum->left;
-        maximum->left = NULL;
+        free(maximum);
+        return result;
     }
-    return maximum;
+    return 0;
 }

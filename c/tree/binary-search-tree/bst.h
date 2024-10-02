@@ -12,7 +12,7 @@ struct node {
 void initialize(struct node**);
 void insert(struct node**, int);
 bool search(struct node*, int);
-struct node* pop_minimum(struct node**);
-struct node* pop_maximum(struct node**);
+int pop_minimum(struct node**);
+int pop_maximum(struct node**);
 
 #endif
