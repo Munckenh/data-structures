@@ -14,5 +14,6 @@ void insert(struct node**, int);
 bool search(struct node*, int);
 int pop_minimum(struct node**);
 int pop_maximum(struct node**);
+void delete(struct node**, int);
 
 #endif

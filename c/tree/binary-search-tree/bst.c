@@ -68,3 +68,40 @@ int pop_maximum(struct node** root) {
     }
     return 0;
 }
+
+void delete(struct node** root, int key) {
+    struct node** current = root;
+    while (*current != NULL) {
+        if ((*current)->key > key) {
+            current = &(*current)->left;
+        }
+        else if ((*current)->key < key) {
+            current = &(*current)->right;
+        }
+        else {
+            break;
+        }
+    }
+    if (*current != NULL) {
+        // If it's a leaf node
+        if ((*current)->left == NULL && (*current)->right == NULL) {
+            free(*current);
+            *current = NULL;
+        }
+        // If it has two children
+        else if ((*current)->left != NULL && (*current)->right != NULL) {
+            (*current)->key = pop_minimum(&(*current)->right);
+        }
+        // If it has one children
+        else {
+            struct node* node = *current;
+            if ((*current)->left != NULL) {
+                *current = (*current)->left;
+            }
+            else {
+                *current = (*current)->right;
+            }
+            free(node);
+        }
+    }
+}
