@@ -105,3 +105,15 @@ void delete(struct node** root, int key) {
         }
     }
 }
+
+void inorder(struct node* root) {
+    // TODO: Implement function
+}
+
+void preorder(struct node* root) {
+    // TODO: Implement function
+}
+
+void postorder(struct node* root) {
+    // TODO: Implement function
+}
