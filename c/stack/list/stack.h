@@ -17,5 +17,6 @@ bool is_empty(struct stack*);
 void push(struct stack*, int);
 int pop(struct stack*);
 int peek(struct stack*);
+void sort(struct stack*);
 
 #endif

@@ -38,3 +38,19 @@ int pop(struct stack* stack) {
 int peek(struct stack* stack) {
     return (stack->top == NULL) ? INT_MAX : stack->top->data;
 }
+
+void sort(struct stack* stack) {
+    int popped;
+    struct stack dummy;
+    initialize(&dummy);
+    while (!is_empty(stack)) {
+        popped = pop(stack);
+        while (!is_empty(&dummy) && peek(&dummy) > popped) {
+            push(stack, pop(&dummy));
+        }
+        push(&dummy, popped);
+    }
+    while (!is_empty(&dummy)) {
+        push(stack, pop(&dummy));
+    }
+}
