@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <stdbool.h>
 #include "bst.h"
 
@@ -107,13 +108,25 @@ void delete(struct node** root, int key) {
 }
 
 void inorder(struct node* root) {
-    // TODO: Implement function
+    if (root != NULL) {
+        inorder(root->left);
+        printf("%d ", root->key);
+        inorder(root->right);
+    }
 }
 
 void preorder(struct node* root) {
-    // TODO: Implement function
+    if (root != NULL) {
+        printf("%d ", root->key);
+        preorder(root->left);
+        preorder(root->right);
+    }
 }
 
 void postorder(struct node* root) {
-    // TODO: Implement function
+    if (root != NULL) {
+        postorder(root->left);
+        postorder(root->right);
+        printf("%d ", root->key);
+    }
 }
