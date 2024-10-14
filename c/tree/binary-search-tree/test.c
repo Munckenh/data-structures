@@ -25,8 +25,8 @@ void test() {
     assert(search(root, 60));
     assert(!search(root, 55));
     assert(!search(root, -1));
-    assert(pop_maximum(root)->key == 60);
-    assert(pop_minimum(&root)->key == 25);
+    assert(pop_maximum(&root) == 60);
+    assert(pop_minimum(&root) == 25);
 }
 
 int main() {
