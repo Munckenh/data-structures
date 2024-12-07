@@ -12,7 +12,7 @@ typedef struct {
     int size;
 } VirtualHeap;
 
-void initialize_heap(VirtualHeap*);
+void initialize_heap(VirtualHeap*, int);
 int allocate(VirtualHeap*);
 void deallocate(VirtualHeap*, int);
 void insert_at_beginning(VirtualHeap*, int*, int);
