@@ -28,15 +28,23 @@ void deallocate(VirtualHeap* vh, int index) {
 
 void insert_at_beginning(VirtualHeap* vh, int* head, int data) {
     int address = allocate(vh);
-    if (address != -1) {
-        vh->heap[address].data = data;
-        vh->heap[address].next = *head;
-        *head = address;
-    }
+    if (address == -1)
+        return;
+    vh->heap[address].data = data;
+    vh->heap[address].next = *head;
+    *head = address;
 }
 
 void insert_at_index(VirtualHeap* vh, int* head, int data, int index) {
-    // TODO: Implement function
+    int address = allocate(vh);
+    if (address == -1)
+        return;
+    vh->heap[address].data = data;
+    int* current;
+    int i;
+    for (i = 0, current = head; i < index && *current != -1; current = &vh->heap[*current].next, i++);
+    vh->heap[address].next = *current;
+    *current = address;
 }
 
 void insert_at_end(VirtualHeap* vh, int* head, int data) {
@@ -66,11 +74,4 @@ void display(VirtualHeap vh, int head) {
     for (int current = head; current != -1; current = vh.heap[current].next) {
         printf("%d ", vh.heap[current].data);
     }
-}
-
-int main() {
-    int head = -1;
-    VirtualHeap vh;
-    initialize_heap(&vh, 10);
-    return 0;
 }
