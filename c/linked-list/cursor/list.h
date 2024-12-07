@@ -21,5 +21,6 @@ void insert_at_end(VirtualHeap*, int*, int);
 void insert_sorted(VirtualHeap*, int*, int);
 void delete_by_index(VirtualHeap*, int*, int);
 void delete_by_data(VirtualHeap*, int*, int);
+void display(VirtualHeap, int);
 
 #endif

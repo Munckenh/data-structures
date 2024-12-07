@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "list.h"
 
 void initialize_heap(VirtualHeap* vh, int size) {
@@ -54,6 +55,11 @@ void delete_by_data(VirtualHeap* vh, int* head, int data) {
     // TODO: Implement function
 }
 
+void display(VirtualHeap vh, int head) {
+    for (int current = head; current != -1; current = vh.heap[current].next) {
+        printf("%d ", vh.heap[current].data);
+    }
+}
 
 int main() {
     int head = -1;
