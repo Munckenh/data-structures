@@ -70,11 +70,23 @@ void insert_sorted(VirtualHeap* vh, int* head, int data) {
 }
 
 void delete_by_index(VirtualHeap* vh, int* head, int index) {
-    // TODO: Implement function
+    int i, *current;
+    for (i = 0, current = head; i++ < index && *current != -1; current = &vh->heap[*current].next);
+    if (*current != -1) {
+        int address = *current;
+        *current = vh->heap[*current].next;
+        deallocate(vh, address);
+    }
 }
 
 void delete_by_data(VirtualHeap* vh, int* head, int data) {
-    // TODO: Implement function
+    int* current;
+    for (current = head; *current != -1 && vh->heap[*current].data != data; current = &vh->heap[*current].next);
+    if (*current != -1) {
+        int address = *current;
+        *current = vh->heap[*current].next;
+        deallocate(vh, address);
+    }
 }
 
 void display(VirtualHeap vh, int head) {
