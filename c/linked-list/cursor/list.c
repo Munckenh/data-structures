@@ -59,7 +59,14 @@ void insert_at_end(VirtualHeap* vh, int* head, int data) {
 }
 
 void insert_sorted(VirtualHeap* vh, int* head, int data) {
-    // TODO: Implement function
+    int address = allocate(vh);
+    if (address == -1)
+        return;
+    vh->heap[address].data = data;
+    int* current;
+    for (current = head; *current != -1 && vh->heap[*current].data < data; current = &vh->heap[*current].next);
+    vh->heap[address].next = *current;
+    *current = address;
 }
 
 void delete_by_index(VirtualHeap* vh, int* head, int index) {
