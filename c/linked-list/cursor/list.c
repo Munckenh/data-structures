@@ -40,9 +40,8 @@ void insert_at_index(VirtualHeap* vh, int* head, int data, int index) {
     if (address == -1)
         return;
     vh->heap[address].data = data;
-    int* current;
-    int i;
-    for (i = 0, current = head; i < index && *current != -1; current = &vh->heap[*current].next, i++);
+    int i, * current;
+    for (i = 0, current = head; i++ < index && *current != -1; current = &vh->heap[*current].next);
     vh->heap[address].next = *current;
     *current = address;
 }
@@ -70,7 +69,7 @@ void insert_sorted(VirtualHeap* vh, int* head, int data) {
 }
 
 void delete_by_index(VirtualHeap* vh, int* head, int index) {
-    int i, *current;
+    int i, * current;
     for (i = 0, current = head; i++ < index && *current != -1; current = &vh->heap[*current].next);
     if (*current != -1) {
         int address = *current;
