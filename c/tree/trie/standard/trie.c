@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h> // TODO: Remove
 #include "trie.h"
 
 Trie* trie_create() {
@@ -115,14 +114,4 @@ bool trie_is_leaf(TrieNode* node) {
         if (node->children[i] != NULL) return false;
     }
     return true;
-}
-
-int main() {
-    Trie* trie = trie_create();
-    trie_insert(trie, "abc");
-    printf("%d", trie_search(trie, "a"));
-    printf("%d", trie_search(trie, "abc"));
-    printf("%d", trie_search(trie, "ab"));
-    printf("%d", trie_search(trie, "abcc"));
-    return 0;
 }
